@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRankReader", "GameRankReader\GameRankReader.csproj", "{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
