@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRankReader", "GameRankReader\GameRankReader.csproj", "{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRank.Crawler", "GameRank.Crawler\GameRank.Crawler.csproj", "{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRank.Core", "GameRank.Core\GameRank.Core.csproj", "{3F9036DC-95F9-4350-8D41-D048CBF62E28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F9036DC-95F9-4350-8D41-D048CBF62E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F9036DC-95F9-4350-8D41-D048CBF62E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F9036DC-95F9-4350-8D41-D048CBF62E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F9036DC-95F9-4350-8D41-D048CBF62E28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
