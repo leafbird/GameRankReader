@@ -75,7 +75,7 @@ internal sealed class SeleniumClient
             subElement = child.FindElement(By.XPath(selector));
             var publisherText = subElement.Text;
 
-            Console.WriteLine($"{rankingText}. {gameTitle} ({publisherText} {imgUrl[..15]})");
+            // Console.WriteLine($"{rankingText}. {gameTitle} ({publisherText} {imgUrl[..15]})");
             result.Ranks.Add(new SingleRankData
             {
                 Ranking = int.Parse(rankingText),
@@ -85,6 +85,7 @@ internal sealed class SeleniumClient
             });
         }
 
+        result.Ranks.Sort();
         return result;
     }
 
