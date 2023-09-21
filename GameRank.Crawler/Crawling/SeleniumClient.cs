@@ -9,7 +9,7 @@ using SeleniumExtras.WaitHelpers;
 
 internal sealed class SeleniumClient
 {
-    public bool GetRankingData([MaybeNullWhen(false)] out TotalRankData result)
+    public bool GetRankingData([MaybeNullWhen(false)] out DailyRankData result)
     {
         ChromeDriverService chromeDriverService = ChromeDriverService.CreateDefaultService();
         chromeDriverService.HideCommandPromptWindow = true;
@@ -40,7 +40,7 @@ internal sealed class SeleniumClient
 
     //// ---------------------------------------------------------------------------------------------
 
-    private static TotalRankData ReadSensorTower(IWebDriver driver)
+    private static DailyRankData ReadSensorTower(IWebDriver driver)
     {
         // 보안 요소는 없다. 다만 렌더링 width가 좁으면 dom 구조가 바뀐다.
         driver.Manage().Window.Maximize(); // 창 크기 최대화
@@ -53,7 +53,7 @@ internal sealed class SeleniumClient
         var selector = "#mainContent > div.MuiBox-root.css-i9gxme > div > div.infinite-scroll-component__outerdiv > div > div.MuiTableContainer-root.css-kge0eu > table > tbody";
         IWebElement element = driver.FindElement(By.CssSelector(selector));
 
-        var result = new TotalRankData { Date = current };
+        var result = new DailyRankData { Date = current };
         foreach (var child in element.FindElements(By.CssSelector("tr")))
         {
             // find ranking
