@@ -3,7 +3,6 @@
 using GameRank.Core;
 using GameRank.Crawler.Configs;
 using GameRank.Crawler.Crawling;
-using Microsoft.VisualBasic;
 
 internal class Program
 {
