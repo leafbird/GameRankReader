@@ -52,6 +52,8 @@ public sealed class FileStorage
         }
 
         File.WriteAllText(fileName, jsonString, Encoding.UTF8);
+
+        Console.WriteLine(jsonString);
     }
     
     public DailyRankData? Load(DateOnly date)

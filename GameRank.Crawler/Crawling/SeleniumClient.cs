@@ -53,12 +53,22 @@ internal sealed class SeleniumClient
         var selector = "#mainContent > div.MuiBox-root.css-i9gxme > div > div.infinite-scroll-component__outerdiv > div > div.MuiTableContainer-root.css-kge0eu > table > tbody";
         IWebElement element = driver.FindElement(By.CssSelector(selector));
 
-        var result = new DailyRankData { Date = current };
+        var result = new DailyRankData
+        {
+            Date = current,
+            Source = new Uri(targetUrl).Host,
+        };
+
         foreach (var child in element.FindElements(By.CssSelector("tr")))
         {
             // find ranking
             var subElement = child.FindElement(By.XPath("td[1]"));
             var rankingText = subElement.Text;
+            
+            // find summary page url
+            selector = "td[4]/span/div/div/div[1]/a";
+            subElement = child.FindElement(By.XPath(selector));
+            var summaryUrl = subElement.GetAttribute("href");
 
             // find image url
             selector = "td[4]/span/div/div/div[1]/a/span/img";
@@ -74,6 +84,21 @@ internal sealed class SeleniumClient
             selector = "td[4]/span/div/div/div[1]/div/div[2]/a/span";
             subElement = child.FindElement(By.XPath(selector));
             var publisherText = subElement.Text;
+            
+            // find star grade
+            selector = "td[4]/span/div/div/div[2]/span";
+            subElement = child.FindElement(By.XPath(selector));
+            var starGrade = subElement.GetAttribute("aria-label");
+            
+            // find category page url
+            selector = "td[4]/span/div/div/div[3]/a";
+            subElement = child.FindElement(By.XPath(selector));
+            var categoryUrl = subElement.GetAttribute("href");
+            
+            // find category text
+            selector = "td[4]/span/div/div/div[3]/a/span";
+            subElement = child.FindElement(By.XPath(selector));
+            var categoryText = subElement.Text;
 
             // Console.WriteLine($"{rankingText}. {gameTitle} ({publisherText} {imgUrl[..15]})");
             result.Ranks.Add(new SingleRankData
@@ -82,6 +107,10 @@ internal sealed class SeleniumClient
                 Title = gameTitle,
                 Publisher = publisherText,
                 ImageUrl = imgUrl,
+                SummaryPageUrl = summaryUrl,
+                StarGrade = starGrade,
+                CategoryPageUrl = categoryUrl,
+                CategoryText = categoryText,
             });
         }
 

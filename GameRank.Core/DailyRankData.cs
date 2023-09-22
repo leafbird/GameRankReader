@@ -18,6 +18,7 @@ public sealed record DailyRankData
     }
 
     public DateTime Date { get; init; }
+    public string Source { get; init; } = string.Empty;
     public List<SingleRankData> Ranks { get; } = new();
     
     public static DailyRankData? FromString(string json)

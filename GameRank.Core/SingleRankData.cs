@@ -6,6 +6,10 @@ public sealed record SingleRankData : IComparable<SingleRankData>
     public string ImageUrl { get; init; } = null!;
     public string Title { get; init; } = null!;
     public string Publisher { get; init; } = null!;
+    public string SummaryPageUrl { get; init; } = string.Empty;
+    public string StarGrade { get; init; } = string.Empty;
+    public string CategoryPageUrl { get; init; } = string.Empty;
+    public string CategoryText { get; init; } = string.Empty;
 
     int IComparable<SingleRankData>.CompareTo(SingleRankData? other)
     {
