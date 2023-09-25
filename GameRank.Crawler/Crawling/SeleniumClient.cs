@@ -49,21 +49,33 @@ internal sealed class SeleniumClient
         var targetDateStr = current.ToString("yyyy-MM-dd");
         var targetUrl = $"https://app.sensortower.com/top-charts?category=game&country=KR&date={targetDateStr}&device=iphone&os=android";
         driver.Navigate().GoToUrl(targetUrl);
+        
+        var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
         var selector = "#mainContent > div.MuiBox-root.css-i9gxme > div > div.infinite-scroll-component__outerdiv > div > div.MuiTableContainer-root.css-kge0eu > table > tbody";
-        IWebElement element = driver.FindElement(By.CssSelector(selector));
+        var element = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(selector)));
 
         var result = new DailyRankData
         {
             Date = current,
             Source = new Uri(targetUrl).Host,
         };
+        
+        var rows = element.FindElements(By.CssSelector("tr"));
+        while (rows.Count == 0)
+        {
+            Console.WriteLine("waiting for data...");
+            Thread.Sleep(1000);
+            rows = element.FindElements(By.CssSelector("tr"));
+        }
 
-        foreach (var child in element.FindElements(By.CssSelector("tr")))
+        foreach (var child in rows)
         {
             // find ranking
             var subElement = child.FindElement(By.XPath("td[1]"));
             var rankingText = subElement.Text;
+            
+            Console.WriteLine($"gathring data... ranking:{rankingText}");
             
             // find summary page url
             selector = "td[4]/span/div/div/div[1]/a";
@@ -114,6 +126,11 @@ internal sealed class SeleniumClient
             });
         }
 
+        if (result.Ranks.Any() == false)
+        {
+            throw new Exception("No data found.");
+        }
+        
         result.Ranks.Sort();
         return result;
     }
