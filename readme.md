@@ -1,6 +1,12 @@
 ## 게임 매출 순위 알림
 
-간간히 찾아보는 게임 매출 순위 정보를 슬랙에서 받아보게 해주는 toy project 입니다. 데이터는 [https://app.sensortower.com/](https://app.sensortower.com/) 에서 가져옵니다. 
+간간히 찾아보는 게임 매출 순위 정보를 슬랙으로 받아보게 해주는 toy project 입니다. 데이터는 [https://app.sensortower.com/](https://app.sensortower.com/) 에서 가져옵니다. 
+
+### 데이터 수집
+
+![](./Document/Images/crawler_example.gif)
+
+[selenium](https://www.selenium.dev/)을 이용해 웹페이지를 크롤링합니다. 스케줄러를 이용해 매일 한 번씩 구동시켜주면 일간 랭킹 정보를 수집에 로컬 디스크에 저장합니다.
 
 ### 데이터 보관
 
