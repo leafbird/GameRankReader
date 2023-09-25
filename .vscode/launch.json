@@ -5,27 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch-Windows",
+            "name": "Crawler-Launch",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/GameRank.Crawler/bin/Debug/net7.0/GameRank.Crawler.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/GameRank.Crawler",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Crawler-Windows",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/GameRank.Crawler/bin/Debug/net7.0/GameRank.Crawler.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}",
             "console": "internalConsole",
             "stopAtEntry": false
         },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
-        },
-        {
-              "name": "Launch-MacOS",
-              "type": "dotnet",
-              "request": "launch",
-              "projectPath": "${workspaceFolder}/GameRank.Crawler/GameRank.Crawler.csproj",
-              "launchConfigurationId": "TargetFramework=;GameRank.Crawler"
-        }
     ]
 }
