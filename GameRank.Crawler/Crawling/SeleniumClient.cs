@@ -1,6 +1,7 @@
 ﻿namespace GameRank.Crawler.Crawling;
 
 using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 using GameRank.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -75,8 +76,6 @@ internal sealed class SeleniumClient
             var subElement = child.FindElement(By.XPath("td[1]"));
             var rankingText = subElement.Text;
             
-            Console.WriteLine($"gathring data... ranking:{rankingText}");
-            
             // find summary page url
             selector = "td[4]/span/div/div/div[1]/a";
             subElement = child.FindElement(By.XPath(selector));
@@ -100,8 +99,19 @@ internal sealed class SeleniumClient
             // find star grade
             selector = "td[4]/span/div/div/div[2]/span";
             subElement = child.FindElement(By.XPath(selector));
-            var starGrade = subElement.GetAttribute("aria-label");
-            
+            var buffer = subElement.GetAttribute("aria-label");
+            float starGrade = 0f;
+
+            Match match = Regex.Match(buffer, @"\d+\.\d+");
+            if (match.Success == false)
+            {
+                Console.WriteLine($"star grade parsing error. {buffer}");
+            }
+            else
+            {
+                starGrade = float.Parse(match.Value);
+            }
+
             // find category page url
             selector = "td[4]/span/div/div/div[3]/a";
             subElement = child.FindElement(By.XPath(selector));
@@ -112,7 +122,8 @@ internal sealed class SeleniumClient
             subElement = child.FindElement(By.XPath(selector));
             var categoryText = subElement.Text;
 
-            // Console.WriteLine($"{rankingText}. {gameTitle} ({publisherText} {imgUrl[..15]})");
+            Console.WriteLine($"gathring data... ranking:{rankingText} {gameTitle}");
+            
             result.Ranks.Add(new SingleRankData
             {
                 Ranking = int.Parse(rankingText),
