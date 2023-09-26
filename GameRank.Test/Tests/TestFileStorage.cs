@@ -1,8 +1,7 @@
-using System.Text;
-using System.Text.Json;
-using GameRank.Core;
-
 namespace GameRank.Test.Tests;
+
+using System.Text;
+using GameRank.Core;
 
 [TestClass]
 public class FileStorageTests
