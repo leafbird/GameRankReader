@@ -6,7 +6,7 @@ using SlackNet.WebApi;
 
 public sealed class SlackController
 {
-    private DailyRankData? rankData;
+    //// private DailyRankData? rankData;
 
     public static Message ToSlackMessage(DailyRankData rankData)
     {

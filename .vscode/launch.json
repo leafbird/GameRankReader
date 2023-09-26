@@ -13,7 +13,7 @@
                 "program": "${workspaceFolder}/GameRank.Crawler/bin/Debug/net7.0/win-x64/GameRank.Crawler.exe"
             },
             "osx": {
-                "program": "${workspaceFolder}/GameRank.Crawler/bin/Debug/net7.0/GameRank.Crawler.dll"
+                "program": "${workspaceFolder}/GameRank.Crawler/bin/Debug/net7.0/osx-arm64/GameRank.Crawler.dll"
             },
             "args": [],
             "cwd": "${workspaceFolder}",
@@ -21,15 +21,20 @@
             "console": "internalConsole"
         },
         {
-            "name": "Crawler-Windows",
+            "name": "Tester-Launch",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/GameRank.Crawler/bin/Debug/net7.0/GameRank.Crawler.dll",
+            "windows": {
+                "program": "${workspaceFolder}/SlackFormatTester/bin/Debug/net7.0/win-x64/SlackFormatTester.exe"
+            },
+            "osx": {
+                "program": "${workspaceFolder}/SlackFormatTester/bin/Debug/net7.0/osx-arm64/SlackFormatTester.dll"
+            },
             "args": [],
             "cwd": "${workspaceFolder}",
-            "console": "internalConsole",
-            "stopAtEntry": false
+            "stopAtEntry": false,
+            "console": "internalConsole"
         },
     ]
 }
