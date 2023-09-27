@@ -1,18 +1,25 @@
 ﻿namespace GameRank.Reader;
 
+using System.Text.Json;
 using GameRank.Core;
+using GameRank.Core.Configs;
 using SlackNet.Blocks;
 using SlackNet.WebApi;
 
-public sealed class SlackController
+public readonly ref struct SlackController
 {
-    //// private DailyRankData? rankData;
-
-    public static Message ToSlackMessage(DailyRankData rankData)
+    private readonly DailyRankData rankData;
+    
+    public SlackController(DailyRankData rankData)
+    {
+        this.rankData = rankData;
+    }
+    
+    public Message ToSlackMessage()
     {
         var message = new Message
         {
-            Text = $"*{rankData.Date:yyyy-MM-dd}*",
+            Text = $"*{this.rankData.Date:yyyy-MM-dd}*",
             Blocks = new List<Block>
             {
                 new SectionBlock
@@ -23,7 +30,7 @@ public sealed class SlackController
             },
         };
 
-        foreach (var game in rankData.Ranks)
+        foreach (var game in this.rankData.Ranks)
         {
             message.Blocks.Add(new SectionBlock
             {
@@ -34,10 +41,10 @@ public sealed class SlackController
         return message;
     }
     
-    public static string ToSlackJson(DailyRankData rankData)
+    public string ToSlackJson()
     {
-        var message = ToSlackMessage(rankData);
-        return message.ToString() ?? string.Empty;
-        // return JsonSerializer.Serialize(message);
+        var message = this.ToSlackMessage();
+        // return message.ToString() ?? string.Empty;
+        return JsonSerializer.Serialize(message, JsonOption.Default);
     }
 }

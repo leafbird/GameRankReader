@@ -59,7 +59,7 @@ internal sealed class SeleniumClient
         var result = new DailyRankData
         {
             Date = current,
-            Source = new Uri(targetUrl).Host,
+            Source = new Uri(targetUrl),
         };
         
         var rows = element.FindElements(By.CssSelector("tr"));

@@ -1,13 +1,13 @@
-﻿namespace GameRank.Crawler.Configs;
+﻿namespace GameRank.Core.Configs;
 
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
-public sealed class CrawlerConfig
+public sealed class GameRankConfig
 {
     public string StoragePath { get; init; } = string.Empty;
     
-    public static bool TryLoad([MaybeNullWhen(false)] out CrawlerConfig config)
+    public static bool TryLoad([MaybeNullWhen(false)] out GameRankConfig config)
     {
         config = null;
 
@@ -18,7 +18,7 @@ public sealed class CrawlerConfig
         }
 
         var json = File.ReadAllText(fileName);
-        config = JsonSerializer.Deserialize<CrawlerConfig>(json);
+        config = JsonSerializer.Deserialize<GameRankConfig>(json);
         return config != null;
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace GameRank.Crawler;
 
 using GameRank.Core;
-using GameRank.Crawler.Configs;
+using GameRank.Core.Configs;
 using GameRank.Crawler.Crawling;
 
 internal class Program
@@ -9,7 +9,7 @@ internal class Program
     private static void Main(string[] args)
     {
         // 1. load config
-        if (CrawlerConfig.TryLoad(out var config) == false)
+        if (GameRankConfig.TryLoad(out var config) == false)
         {
             Console.WriteLine("Failed to load config.");
             return;

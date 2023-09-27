@@ -1,33 +1,24 @@
 namespace GameRank.Core;
 
-using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Unicode;
+using System.Text.Json.Serialization;
+using GameRank.Core.Configs;
 
 public sealed record DailyRankData 
 {
-    private static readonly JsonSerializerOptions JsonOption;
-
-    static DailyRankData()
-    {
-        JsonOption = new JsonSerializerOptions
-        {
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All), // 모든 코드에 escape 처리를 제거.
-            WriteIndented = true, // 파일에 저장할 때, 들여쓰기를 해서 저장하도록 설정
-        };
-    }
-
     public DateTime Date { get; init; }
-    public string Source { get; init; } = string.Empty;
+    public required Uri Source { get; init; }
+    [JsonIgnore]
+    public string SourceHost => this.Source.Host;
     public List<SingleRankData> Ranks { get; } = new();
     
     public static DailyRankData? FromString(string json)
     {
-        return JsonSerializer.Deserialize<DailyRankData>(json, JsonOption);
+        return JsonSerializer.Deserialize<DailyRankData>(json, JsonOption.Default);
     }
 
     public string ToJsonString()
     {
-        return JsonSerializer.Serialize(this, JsonOption);
+        return JsonSerializer.Serialize(this, JsonOption.Default);
     }
 }

@@ -35,7 +35,7 @@ public class FileStorageTests
         var rankData = new DailyRankData
         {
             Date = DateTime.Now, 
-            Source = new Uri("https://example.com").ToString(),
+            Source = new Uri("https://example.com"),
         };
 
         // Act
@@ -54,7 +54,7 @@ public class FileStorageTests
         var rankData = new DailyRankData
         {
             Date = DateTime.Now, 
-            Source = new Uri("https://example.com").ToString(),
+            Source = new Uri("https://example.com"),
         };
         // var expectedPath = Path.Combine(this.testPath, rankData.Date.Year.ToString(), rankData.Date.Month.ToString(), "latest.json");
         var expectedPath = Path.Combine(this.testPath, "latest.json");
