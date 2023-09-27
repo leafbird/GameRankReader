@@ -36,6 +36,8 @@ public readonly ref struct SlackController
             {
                 Text = new Markdown($"{game.Ranking}. {game.Title}"),
             });
+            
+            message.Blocks.Add(new DividerBlock());
         }
 
         return message;

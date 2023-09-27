@@ -10,7 +10,7 @@ public sealed record DailyRankData
     public required Uri Source { get; init; }
     [JsonIgnore]
     public string SourceHost => this.Source.Host;
-    public List<SingleRankData> Ranks { get; } = new();
+    public List<SingleRankData> Ranks { get; init; } = new();
     
     public static DailyRankData? FromString(string json)
     {

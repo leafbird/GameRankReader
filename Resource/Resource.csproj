@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- .vscode 설정파일 -->
+    <None Include="..\.vscode\*.json">
+      <Link>.vscode\%(Filename)%(Extension)</Link>
+    </None>
+    
+    <!-- crawler 데터 저장파일 -->
+    <None Include="..\Storage\**\*.json">
+      <Link>Storage\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+    </None>
+    
+  </ItemGroup>
+</Project>
