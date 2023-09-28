@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GameRank.Crawler": {
+      "commandName": "Project",
+      "workingDirectory": "..\\"
+    }
+  }
+}
