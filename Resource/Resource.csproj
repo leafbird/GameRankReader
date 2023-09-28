@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Document 폴더 -->
+    <None Include="..\Document\**\*.*">
+      <Link>Document\%(Filename)%(Extension)</Link>
+    </None>
+    
     <!-- .vscode 설정파일 -->
     <None Include="..\.vscode\*.json">
       <Link>.vscode\%(Filename)%(Extension)</Link>
