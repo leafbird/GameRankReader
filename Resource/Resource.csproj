@@ -9,7 +9,7 @@
   <ItemGroup>
     <!-- Document 폴더 -->
     <None Include="..\Document\**\*.*">
-      <Link>Document\%(Filename)%(Extension)</Link>
+      <Link>Document\%(RecursiveDir)\%(Filename)%(Extension)</Link>
     </None>
     
     <!-- .vscode 설정파일 -->

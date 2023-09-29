@@ -7,6 +7,28 @@
     <CodeAnalysisRuleSet>../Leafbird.CodingStyle.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>GameRank.Reader</PackageId>
+    <PackageVersion>0.0.1.0</PackageVersion>
+    <Title>GameRank.Reader</Title>
+    <Authors>leafbird</Authors>
+    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/leafbird/GameRankReader </PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>nuget.readme.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>first release</PackageReleaseNotes>
+    <Description>모바일 게임 매출 순위를 크롤링하고 슬랙 메시지로 전송하는 자동화 봇입니다.</Description>
+    <Copyright>Copyright © 2023 leafbird Limited</Copyright>
+    <PackageTags>mobile game rank</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Document\Images\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\Document\nuget.readme.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="SlackNet" Version="0.11.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.507">
