@@ -3,13 +3,13 @@
 public sealed record SingleRankData : IComparable<SingleRankData>
 {
     public int Ranking { get; init; }
-    public string ImageUrl { get; init; } = null!;
-    public string Title { get; init; } = null!;
-    public string Publisher { get; init; } = null!;
-    public string SummaryPageUrl { get; init; } = string.Empty;
+    public required string ImageUrl { get; init; }
+    public required string Title { get; init; }
+    public required string Publisher { get; init; }
+    public required string SummaryPageUrl { get; init; }
     public float StarGrade { get; init; }
-    public string CategoryPageUrl { get; init; } = string.Empty;
-    public string CategoryText { get; init; } = string.Empty;
+    public required string CategoryPageUrl { get; init; }
+    public required string CategoryText { get; init; }
 
     int IComparable<SingleRankData>.CompareTo(SingleRankData? other)
     {
