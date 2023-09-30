@@ -64,8 +64,8 @@ public sealed record SingleRankData : IComparable<SingleRankData>
 ### 프로젝트 하면서 얻은 것들
 
 * 일단 `매출 순위 자동 알림 봇`을 얻음. 매주 자동알림 오게 해두고 볼 예정.
-* vscode 개발환경 체득. 이제 mac에서 간단한 c# 프로젝트 구현 가능.
-* vim 편집 방식 활용도 향상.
-* nuget package 배포 처음으로 해봄.
-* selenium 라이브러리 처음 사용.
-* closed shadow dom 이란 존재에 대해 알게 됨. (뚫는 법 알고 싶다...)
+* `vscode` 개발환경 체득. 이제 mac에서 간단한 c# 프로젝트 구현 가능.
+* `vim` 편집 방식 활용도 향상.
+* `nuget package` 배포 처음으로 해봄.
+* `selenium` 라이브러리 처음 사용해봄.
+* `closed shadow dom` 이란 존재에 대해 알게 됨. (뚫는 법 알고 싶다...)
