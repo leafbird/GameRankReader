@@ -11,7 +11,7 @@ public sealed record SingleRankData : IComparable<SingleRankData>
     public required string CategoryPageUrl { get; init; }
     public required string CategoryText { get; init; }
 
-    int IComparable<SingleRankData>.CompareTo(SingleRankData? other)
+    public int CompareTo(SingleRankData? other)
     {
         return this.Ranking.CompareTo(other?.Ranking);
     }
