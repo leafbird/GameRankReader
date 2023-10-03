@@ -20,21 +20,5 @@
             "stopAtEntry": false,
             "console": "internalConsole"
         },
-        {
-            "name": "Tester-Launch",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "windows": {
-                "program": "${workspaceFolder}/SlackFormatTester/bin/Debug/net7.0/win-x64/SlackFormatTester.exe"
-            },
-            "osx": {
-                "program": "${workspaceFolder}/SlackFormatTester/bin/Debug/net7.0/osx-arm64/SlackFormatTester.dll"
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            "stopAtEntry": false,
-            "console": "internalConsole"
-        },
     ]
 }
