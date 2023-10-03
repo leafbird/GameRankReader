@@ -175,6 +175,7 @@ internal sealed class SeleniumClient
 
     private static void ReadMobileIndex(IWebDriver driver)
     {
+        // note: not working :(
         // need to salve 'shadow dom' problem...
         // 웹 페이지로 이동
         var targetUrl = "https://www.mobileindex.com/mi-chart/realtime-rank";
