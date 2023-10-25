@@ -9,18 +9,25 @@
   <ItemGroup>
     <!-- Document 폴더 -->
     <None Include="..\Document\**\*.*">
-      <Link>Document\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+      <Link>Document/%(RecursiveDir)/%(Filename)%(Extension)</Link>
     </None>
     
     <!-- .vscode 설정파일 -->
     <None Include="..\.vscode\*.json">
-      <Link>.vscode\%(Filename)%(Extension)</Link>
+      <Link>.vscode/%(Filename)%(Extension)</Link>
     </None>
     
-    <!-- crawler 데터 저장파일 -->
+    <!-- crawler 데이터 저장파일 -->
     <None Include="..\Storage\**\*.json">
-      <Link>Storage\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+      <Link>Storage/%(RecursiveDir)/%(Filename)%(Extension)</Link>
     </None>
-    
+
+    <!-- readme -->
+    <None Include="..\README.md">
+      <Link>README.md</Link>
+    </None>
   </ItemGroup>
+
+    
+
 </Project>
