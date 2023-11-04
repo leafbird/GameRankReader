@@ -2,6 +2,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
+using Cs.Logging;
 using GameRank.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -26,7 +27,7 @@ internal sealed class SeleniumClient
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Log.Debug(e.Message);
             result = default;
             return false;
         }
@@ -65,7 +66,7 @@ internal sealed class SeleniumClient
         var rows = element.FindElements(By.CssSelector("tr"));
         while (rows.Count == 0)
         {
-            Console.WriteLine("waiting for data...");
+            Log.Debug("waiting for data...");
             Thread.Sleep(1000);
             rows = element.FindElements(By.CssSelector("tr"));
         }
@@ -105,7 +106,7 @@ internal sealed class SeleniumClient
             Match match = Regex.Match(buffer, @"\d+\.\d+");
             if (match.Success == false)
             {
-                Console.WriteLine($"star grade parsing error. {buffer}");
+                Log.Debug($"star grade parsing error. {buffer}");
             }
             else
             {
@@ -122,7 +123,7 @@ internal sealed class SeleniumClient
             subElement = child.FindElement(By.XPath(selector));
             var categoryText = subElement.Text;
 
-            Console.WriteLine($"gathring data... ranking:{rankingText} {gameTitle}");
+            Log.Debug($"gathring data... ranking:{rankingText} {gameTitle}");
             
             result.Ranks.Add(new SingleRankData
             {
@@ -169,7 +170,7 @@ internal sealed class SeleniumClient
             var companyElement = child.FindElement(By.XPath("td[4]/span"));
             var companyText = companyElement.Text;
 
-            Console.WriteLine($"{titleText} ({companyText})");
+            Log.Debug($"{titleText} ({companyText})");
         }
     }
 
@@ -200,11 +201,11 @@ internal sealed class SeleniumClient
             // JavaScript를 실행하여 데이터 추출
             IJavaScriptExecutor jsExecutor = (IJavaScriptExecutor)driver;
             var textInsideShadowDOM = jsExecutor.ExecuteScript(script)?.ToString();
-            Console.WriteLine(textInsideShadowDOM);
+            // Log.Debug(textInsideShadowDOM);
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Log.Debug(e.Message);
         }
         finally
         {
