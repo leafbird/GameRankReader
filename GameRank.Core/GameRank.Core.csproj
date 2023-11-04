@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <CodeAnalysisRuleSet>../Leafbird.CodingStyle.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\BaseEnvironment\CodingStyle.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
     
   <PropertyGroup>
@@ -13,13 +13,13 @@
     <PackageVersion>0.0.1.0</PackageVersion>
     <Title>GameRank.Core</Title>
     <Authors>leafbird</Authors>
-    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/leafbird/GameRankReader </PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>nuget.readme.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>first release</PackageReleaseNotes>
-    <Description>It is an automation bot that crawls mobile game revenue rankings and sends them as Slack messages.</Description>
+    <Description>An automation bot that crawls mobile game revenue rankings and sends them as Slack messages.</Description>
     <Copyright>Copyright © 2023 leafbird Limited</Copyright>
     <PackageTags>mobile game rank</PackageTags>
   </PropertyGroup>

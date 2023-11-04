@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
-    <CodeAnalysisRuleSet>../Leafbird.CodingStyle.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\BaseEnvironment\CodingStyle.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
