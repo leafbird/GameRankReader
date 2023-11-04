@@ -1,6 +1,7 @@
 ﻿namespace GameRank.Core;
 
 using System.Text;
+using Cs.Logging;
 
 public sealed class FileStorage
 {
@@ -12,7 +13,7 @@ public sealed class FileStorage
         this.basePath = path;
         if (Directory.Exists(this.basePath) == false)
         {
-            Console.WriteLine($"create storage root path:{this.basePath}");
+            Log.Debug($"create storage root path:{this.basePath}");
             Directory.CreateDirectory(this.basePath);
         }
     }
