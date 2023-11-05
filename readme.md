@@ -1,4 +1,4 @@
-[![.NET](https://github.com/leafbird/GameRankReader/actions/workflows/dotnet.yml/badge.svg)](https://github.com/leafbird/GameRankReader/actions/workflows/dotnet.yml)
+![.NET](https://github.com/leafbird/GameRankReader/actions/workflows/dotnet.yml/badge.svg) ![push to nuget.org](https://github.com/leafbird/GameRankReader/actions/workflows/nuget.yml/badge.svg)
 
 ## 게임 매출 순위 알림
 
