@@ -7,10 +7,11 @@ on:
   push:
     tags:
       - 'v*.*.*'
-
+    
 env:
   BUILD_CONFIGURATION: Release
-  PACKAGE_PATH: ./GameRank.Core/**/*.nupkg
+  PACKAGE_PATH: ./GameRank.Core/bin/Release
+  ARTIFACT_PATH: ./Artifacts
 
 jobs:
   build:
@@ -20,9 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
       with:
-        submodules: 'recursive' # submodule 받아오지 않으면 stylecop이 제대로 동작하지 않는다. 
+        submodules: 'recursive' # submodule 받아오지 않으면 stylecop이 제대로 동작하지 않는다.
 
     - name: Get Version from Tag
       id: get_version
@@ -30,7 +32,7 @@ jobs:
         TAG_VERSION=$(git describe --tags --abbrev=0 | sed 's/v//')
         echo "TAG_VERSION=$TAG_VERSION" >> $GITHUB_ENV
       shell: bash
-  
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
@@ -47,6 +49,46 @@ jobs:
 
     - name: pack
       run: dotnet pack -p:PackageVersion=$TAG_VERSION -c ${{env.BUILD_CONFIGURATION}}
+        
+    - name: gather artifacts
+      run: |
+        mkdir ${{env.ARTIFACT_PATH}}
+        cp -r ${{env.PACKAGE_PATH}}/*.nupkg ${{env.ARTIFACT_PATH}}
+      shell: bash
+        
+    - name: upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: nuget
+        path: ${{env.ARTIFACT_PATH}}
+        
+  push-to-nuget:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: nuget
+        path: ${{env.ARTIFACT_PATH}}
 
     - name: push
-      run: dotnet nuget push ${{env.PACKAGE_PATH}} --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push ${{env.ARTIFACT_PATH}}/**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+        
+
+  push-to-github-package:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: nuget
+        path: ${{env.ARTIFACT_PATH}}
+
+    - name: push
+      run : dotnet nuget push ${{env.ARTIFACT_PATH}}/**/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
