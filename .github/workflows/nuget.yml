@@ -92,8 +92,9 @@ jobs:
         name: nuget
         path: ${{env.ARTIFACT_PATH}}
 
-    - name: authenticate
-      run: dotnet nuget add source --username ${{github.repository_owner}} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{github.repository_owner}}/index.json"
+    - name: add nuget source
+      run: dotnet nuget add source --username ${{github.repository_owner}} --password ${{ secrets.PRIVATE_ACCESS_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/${{github.repository_owner}}/index.json"
 
     - name: push
-      run : dotnet nuget push ${{env.ARTIFACT_PATH}}/**/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+      run : dotnet nuget push ${{env.ARTIFACT_PATH}}/**/*.nupkg --source "github"
+      # run : dotnet nuget push ${{env.ARTIFACT_PATH}}/**/*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{ secrets.PRIVATE_ACCESS_TOKEN }}

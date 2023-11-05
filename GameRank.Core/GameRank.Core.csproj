@@ -15,6 +15,7 @@
     <Authors>leafbird</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/leafbird/GameRankReader </PackageProjectUrl>
+    <RepositoryUrl>https://github.com/leafbird/GameRankReader </RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>nuget.readme.md</PackageReadmeFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
