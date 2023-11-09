@@ -97,6 +97,8 @@ jobs:
   create-relase:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
 
