@@ -34,10 +34,10 @@ jobs:
       run: dotnet build -c ${{env.BUILD_CONFIGURATION}} --no-restore
           
     - name: Publish
-      run: dotnet publish -c ${{env.BUILD_CONFIGURATION}} -o bin/publish --no-build --no-restore
+      run: dotnet publish ./GameRank.Crawler/GameRank.Crawler.csproj -c ${{env.BUILD_CONFIGURATION}} -o bin/publish --no-build --no-restore
     
     - name: Crawling
-      run: ./bin/publish/GameRank.Crawler cnofig.github.json
+      run: ./bin/publish/GameRank.Crawler config.github.json
           
     - name: Commit
       run: |
