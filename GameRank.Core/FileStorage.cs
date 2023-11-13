@@ -2,6 +2,7 @@
 
 using System.Text;
 using Cs.Logging;
+using GameRank.Core.Configs;
 
 public sealed class FileStorage
 {
@@ -28,7 +29,7 @@ public sealed class FileStorage
         {
             Directory.CreateDirectory(targetPath);
         }
-        
+
         var fileName = Path.Combine(targetPath, BuildFileName(date));
         if (File.Exists(fileName))
         {
@@ -37,8 +38,15 @@ public sealed class FileStorage
 
         var jsonString = rankData.ToJsonString();
         File.WriteAllText(fileName, jsonString, Encoding.UTF8);
-        
+
         // latest.json 처리
+        var config = GameRankConfig.Instance;
+        if (config.CreateLatestFile == false)
+        {
+            Log.Debug("skip create latest.json");
+            return;
+        }
+
         fileName = Path.Combine(this.basePath, LatestFileName);
         var latest = Load(fileName);
         if (latest is not null)
@@ -47,14 +55,14 @@ public sealed class FileStorage
             {
                 return; // 갱신이 필요없다면 바로 종료. 
             }
-            
+
             // latest.json 파일이 있다면 삭제한다.
             File.Delete(Path.Combine(this.basePath, LatestFileName));
         }
 
         File.WriteAllText(fileName, jsonString, Encoding.UTF8);
     }
-    
+
     public DailyRankData? Load(DateOnly date)
     {
         var targetPath = Path.Combine(this.basePath, date.Year.ToString(), date.Month.ToString());

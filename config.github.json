@@ -1,3 +1,4 @@
 {
-    "StoragePath": "./Storage.Github"
+    "StoragePath": "./Storage.Github",
+    "CreateLatestFile": false
 }

@@ -5,7 +5,10 @@ using System.Text.Json;
 
 public sealed class GameRankConfig
 {
+    public static GameRankConfig Instance { get; private set; } = null!;
+
     public string StoragePath { get; init; } = string.Empty;
+    public bool CreateLatestFile { get; init; }
     
     public static bool TryLoad(string[] args, [MaybeNullWhen(false)] out GameRankConfig config)
     {
@@ -19,6 +22,12 @@ public sealed class GameRankConfig
 
         var json = File.ReadAllText(fileName);
         config = JsonSerializer.Deserialize<GameRankConfig>(json);
-        return config != null;
+        if (config is null)
+        {
+            return false;
+        }
+
+        Instance = config;
+        return true;
     }
 }
