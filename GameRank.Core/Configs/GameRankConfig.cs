@@ -7,11 +7,11 @@ public sealed class GameRankConfig
 {
     public string StoragePath { get; init; } = string.Empty;
     
-    public static bool TryLoad([MaybeNullWhen(false)] out GameRankConfig config)
+    public static bool TryLoad(string[] args, [MaybeNullWhen(false)] out GameRankConfig config)
     {
         config = null;
 
-        string fileName = "config.json";
+        string fileName = args.FirstOrDefault() ?? "config.json";
         if (File.Exists(fileName) == false)
         {
             return false;
