@@ -1,3 +1,4 @@
 {
-    "StoragePath": "./Storage"
+    "StoragePath": "./Storage",
+    "CreateLatestFile": true
 }

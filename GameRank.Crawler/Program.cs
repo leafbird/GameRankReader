@@ -12,7 +12,7 @@ internal class Program
     {
         Log.Initialize(new SimpleFileLogProvider("log.txt"), LogLevelConfig.All);
         // 1. load config
-        if (GameRankConfig.TryLoad(out var config) == false)
+        if (GameRankConfig.TryLoad(args, out var config) == false)
         {
             Log.Debug("Failed to load config.");
             return;
