@@ -5,7 +5,7 @@ using System.Text.Json;
 
 public sealed class GameRankConfig
 {
-    public static GameRankConfig Instance { get; private set; } = null!;
+    public static GameRankConfig Instance { get; private set; } = new();
 
     public string StoragePath { get; init; } = string.Empty;
     public bool CreateLatestFile { get; init; }
@@ -29,5 +29,14 @@ public sealed class GameRankConfig
 
         Instance = config;
         return true;
+    }
+    
+    public static void SetForTest()
+    {
+        Instance = new GameRankConfig
+        {
+            StoragePath = Path.Combine(Path.GetTempPath(), "GameRank"),
+            CreateLatestFile = true,
+        };
     }
 }
