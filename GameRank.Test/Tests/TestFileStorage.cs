@@ -11,7 +11,9 @@ public class FileStorageTests
     [TestInitialize]
     public void Initialize()
     {
-        this.testPath = Path.Combine(Path.GetTempPath(), "FileStorageTests");
+        GameRankConfig.SetForTest();
+        this.testPath = GameRankConfig.Instance.StoragePath;
+
         if (Directory.Exists(this.testPath))
         {
             Directory.Delete(this.testPath, true);
@@ -49,6 +51,8 @@ public class FileStorageTests
     [TestMethod]
     public void 저장내용_JSON_확인()
     {
+        var config = GameRankConfig.Instance;
+
         // Arrange
         var storage = new FileStorage(this.testPath);
         var rankData = new DailyRankData
