@@ -52,9 +52,9 @@ internal sealed class SeleniumClient
         var targetUrl = $"https://app.sensortower.com/top-charts?category=game&country=KR&date={targetDateStr}&device=iphone&os=android";
         driver.Navigate().GoToUrl(targetUrl);
         
-        var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
 
-        var selector = "#mainContent > div.MuiBox-root.css-i9gxme > div > div.infinite-scroll-component__outerdiv > div > div.MuiTableContainer-root.css-kge0eu > table > tbody";
+        var selector = "#mainContent > div.MuiBox-root.css-i9gxme > div > div.infinite-scroll-component__outerdiv > div > div.MuiTableContainer-root.css-1p6ntod > table > tbody";
         var element = wait.Until(ExpectedConditions.ElementExists(By.CssSelector(selector)));
 
         var result = new DailyRankData
