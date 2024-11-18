@@ -3,28 +3,32 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRank.Crawler", "GameRank.Crawler\GameRank.Crawler.csproj", "{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRank.Crawler", "GameRank.Crawler\GameRank.Crawler.csproj", "{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRank.Core", "GameRank.Core\GameRank.Core.csproj", "{3F9036DC-95F9-4350-8D41-D048CBF62E28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRank.Core", "GameRank.Core\GameRank.Core.csproj", "{3F9036DC-95F9-4350-8D41-D048CBF62E28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRank.Test", "GameRank.Test\GameRank.Test.csproj", "{7A0D0728-C624-4D27-B7FD-CB293CBCA15A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRank.Test", "GameRank.Test\GameRank.Test.csproj", "{7A0D0728-C624-4D27-B7FD-CB293CBCA15A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67D927C2-6060-45EB-9510-8E80AD723323}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		config.json = config.Json
+		config.json = config.json
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resource", "Resource\Resource.csproj", "{F9AB6C38-F686-4999-A7BD-92B2B937FB0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Resource", "Resource\Resource.csproj", "{F9AB6C38-F686-4999-A7BD-92B2B937FB0C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflow", "Workflow", "{1978BABD-8A73-458F-B087-4014A4996360}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\crawling.yml = .github\workflows\crawling.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.github\workflows\nuget.yml = .github\workflows\nuget.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DC5E928C-81DA-4F34-876C-C4A2BC48CCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -43,5 +47,14 @@ Global
 		{F9AB6C38-F686-4999-A7BD-92B2B937FB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9AB6C38-F686-4999-A7BD-92B2B937FB0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9AB6C38-F686-4999-A7BD-92B2B937FB0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1978BABD-8A73-458F-B087-4014A4996360} = {67D927C2-6060-45EB-9510-8E80AD723323}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBC99C54-788A-4003-BDF7-0E3208BF0082}
 	EndGlobalSection
 EndGlobal

@@ -10,7 +10,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Log.Initialize(new SimpleFileLogProvider("log.txt"), LogLevelConfig.All);
+        var logProvider = new SimpleFileLogProvider("log.txt");
+        logProvider.SetWriteToConsole(true);
+        Log.Initialize(logProvider, LogLevelConfig.All);
         // 1. load config
         if (GameRankConfig.TryLoad(args, out var config) == false)
         {
